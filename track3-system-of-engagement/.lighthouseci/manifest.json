@@ -1,0 +1,15 @@
+[
+  {
+    "url": "http://localhost:3000/dashboard",
+    "isRepresentativeRun": true,
+    "htmlPath": "lhci_report.html",
+    "jsonPath": "lhci_report.json",
+    "summary": {
+      "performance": 0.95,
+      "accessibility": 1.0,
+      "best-practices": 1.0,
+      "seo": 0.92,
+      "pwa": 0.5
+    }
+  }
+]

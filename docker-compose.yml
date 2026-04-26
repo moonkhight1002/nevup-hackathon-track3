@@ -1,0 +1,19 @@
+services:
+  nevup-track3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4173:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://mock-api:4010
+    depends_on:
+      - mock-api
+
+  mock-api:
+    image: stoplight/prism:4
+    command: mock /data/nevup_openapi.yaml --port 4010 --host 0.0.0.0
+    volumes:
+      - ./NevUp Hackathon 2026/nevup_openapi.yaml:/data/nevup_openapi.yaml
+    ports:
+      - "4010:4010"

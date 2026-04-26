@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+track3-system-of-engagement/node_modules/
+
+# next.js
+track3-system-of-engagement/.next/
+track3-system-of-engagement/out/
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+
+# vercel
+.vercel/
