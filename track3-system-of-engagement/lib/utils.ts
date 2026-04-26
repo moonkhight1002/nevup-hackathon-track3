@@ -8,6 +8,10 @@ export const emotionLabel: Record<Emotion, string> = {
   neutral: "Neutral",
 };
 
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export function classNames(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
 }

@@ -25,7 +25,7 @@ export function EmotionChartClient({ data }: { data: Item[] }) {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: -20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-            <XAxis dataKey="emotion" stroke="#64748b" tick={{ fontSize: 10, fontFamily: "monospace", textTransform: "uppercase" }} />
+            <XAxis dataKey="emotion" stroke="#64748b" tick={{ fontSize: 10, fontFamily: "monospace" }} />
             <YAxis stroke="#64748b" tick={{ fontSize: 10, fontFamily: "monospace" }} />
             <Tooltip
               contentStyle={{

@@ -62,6 +62,7 @@ export type MetricsResponse = {
     bucket: string;
     tradeCount: number;
     pnl: number;
+    winRate?: number;
     sessionId?: string;
   }>;
 };
@@ -72,7 +73,11 @@ export type ProfileResponse = {
   pathology?: string;
   strengths?: string[];
   weaknesses?: string[];
-  peakWindow?: string;
+  peakPerformanceWindow?: {
+    startHour?: number;
+    endHour?: number;
+    winRate?: number;
+  } | null;
   dominantPathologies?: Array<{
     pathology: string;
     confidence: number;

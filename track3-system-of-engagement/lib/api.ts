@@ -1,5 +1,6 @@
 import * as seed from "./seed";
 import { sleep } from "./utils";
+import { SessionSummary, MetricsResponse, ProfileResponse, DebriefRequest } from "./types";
 
 type RequestOptions = {
   baseUrl: string;

@@ -57,10 +57,10 @@ export default function DashboardPage() {
 
   const sessionIds = useMemo(() => {
     const fromPathologies = profileQuery.data?.dominantPathologies
-      ?.flatMap((p) => p.evidenceSessions || []) || [];
+      ?.flatMap((p: any) => p.evidenceSessions || []) || [];
     const fromMetrics = metricsQuery.data?.timeseries
-      ?.map(t => t.sessionId)
-      .filter((id): id is string => Boolean(id)) || [];
+      ?.map((t: any) => t.sessionId)
+      .filter((id: any): id is string => Boolean(id)) || [];
     
     return [...new Set([...fromPathologies, ...fromMetrics])].slice(0, 50);
   }, [profileQuery.data, metricsQuery.data]);
@@ -82,7 +82,7 @@ export default function DashboardPage() {
 
   const emotionChartData = useMemo(() => {
     const source = metricsQuery.data?.emotionalStats || metricsQuery.data?.winRateByEmotionalState || {};
-    return Object.entries(source).map(([emotion, entry]) => ({
+    return Object.entries(source).map(([emotion, entry]: [string, any]) => ({
       emotion,
       wins: entry.wins,
       losses: entry.losses,
@@ -126,7 +126,7 @@ export default function DashboardPage() {
             <span className="mb-1 block text-xs font-mono uppercase tracking-wide text-slate-400">Demo Trader</span>
             <select
               value={userId}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                 const selectedId = e.target.value;
                 const trader = DEMO_TRADERS.find((t) => t.userId === selectedId);
                 if (trader) {
@@ -139,7 +139,7 @@ export default function DashboardPage() {
               className="w-full rounded-sm border border-slate-700 bg-[#050505] px-3 py-2 text-accent focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors cursor-pointer appearance-none"
             >
               <option value="" disabled>Select a trader</option>
-              {DEMO_TRADERS.map((t) => (
+              {DEMO_TRADERS.map((t: any) => (
                 <option key={t.userId} value={t.userId} className="bg-[#050505] text-slate-200">
                   {t.name}
                 </option>

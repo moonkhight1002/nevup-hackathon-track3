@@ -56,16 +56,16 @@ export function SessionDebriefClient({ sessionId }: { sessionId: string }) {
   const saveMutation = useMutation({
     mutationFn: async () => {
       if (!sessionQuery.data) return;
-      const emotions = sessionQuery.data.trades.map((trade) => ({
+      const emotions = sessionQuery.data.trades.map((trade: any) => ({
         tradeId: trade.tradeId,
         emotion: (selectedEmotions[trade.tradeId] || "neutral") as Emotion,
       }));
-      const ratings = sessionQuery.data.trades.map((trade) => ({
+      const ratings = sessionQuery.data.trades.map((trade: any) => ({
         tradeId: trade.tradeId,
         rating: adherenceRatings[trade.tradeId] || 3,
       }));
       const avgRating =
-        ratings.reduce((sum, item) => sum + item.rating, 0) / Math.max(1, ratings.length);
+        ratings.reduce((sum: number, item: any) => sum + item.rating, 0) / Math.max(1, ratings.length);
       const topEmotion = emotions[0]?.emotion || "neutral";
       return submitDebrief(
         sessionId,
@@ -124,7 +124,7 @@ export function SessionDebriefClient({ sessionId }: { sessionId: string }) {
             id={`debrief-panel-${currentStep}`}
             role="tabpanel"
             tabIndex={-1}
-            ref={(node) => {
+            ref={(node: HTMLElement | null) => {
               if (node) node.focus();
             }}
             initial={currentAnimation.initial}
