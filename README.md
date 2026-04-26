@@ -1,6 +1,6 @@
 # NevUp Hackathon 2026 - Track 3
 
-**Participant:** moonkhight1002
+**Participant:** Hritam
 **Track:** System of Engagement (Track 3)
 
 ## 🚀 Quick Links
