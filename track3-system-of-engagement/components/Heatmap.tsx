@@ -32,11 +32,16 @@ export function Heatmap({ points, onOpenSession }: Props) {
     if (!mounted) return [];
     const map = new Map(points.map((point) => [normalizeDate(point.date), point]));
     
-    let maxTime = new Date().getTime();
-    if (points.length > 0) {
-      maxTime = Math.max(...points.map((p) => new Date(p.date).getTime()));
+    let latestDate = new Date();
+    const maxPointTime = points.length > 0 ? Math.max(...points.map((p) => new Date(p.date).getTime())) : 0;
+    
+    // If the data is old (like the seed data), anchor to the latest point's week-end
+    if (maxPointTime > 0 && (new Date().getTime() - maxPointTime) > 30 * 24 * 60 * 60 * 1000) {
+      latestDate = new Date(maxPointTime);
+      const dayOfWeek = latestDate.getDay();
+      latestDate.setDate(latestDate.getDate() + (6 - dayOfWeek)); 
     }
-    const latestDate = new Date(maxTime);
+    
     latestDate.setHours(0, 0, 0, 0);
 
     const values: HeatmapPoint[] = [];
